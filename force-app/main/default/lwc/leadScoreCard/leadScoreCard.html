@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title="Lead Scoring Information" icon-name="standard:lead">
+        <div class="slds-p-horizontal_medium">
+            <template if:true={lead}>
+                <!-- Score and Grade -->
+                <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-text-title">Lead Score</div>
+                        <div class="slds-text-heading_large">{lead.Lead_Score__c}</div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-text-title">Lead Grade</div>
+                        <div class="slds-text-heading_large grade-badge" data-grade={lead.Lead_Grade__c}>
+                            {lead.Lead_Grade__c}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Score Components -->
+                <div class="slds-text-title slds-m-bottom_x-small">Score Components</div>
+                <lightning-progress-bar value={lead.Lead_Source_Score__c} size="large" 
+                                       class="slds-m-bottom_small">
+                    <span class="progress-label">Lead Source: {lead.LeadSource} ({lead.Lead_Source_Score__c})</span>
+                </lightning-progress-bar>
+                
+                <lightning-progress-bar value={lead.Industry_Score__c} size="large"
+                                       class="slds-m-bottom_small">
+                    <span class="progress-label">Industry: {lead.Industry} ({lead.Industry_Score__c})</span>
+                </lightning-progress-bar>
+                
+                <lightning-progress-bar value={lead.Company_Size_Score__c} size="large"
+                                       class="slds-m-bottom_small">
+                    <span class="progress-label">Company Size: {lead.NumberOfEmployees} ({lead.Company_Size_Score__c})</span>
+                </lightning-progress-bar>
+                
+                <!-- Assignment Information -->
+                <template if:true={lead.Assigned_To__c}>
+                    <div class="slds-m-top_medium">
+                        <div class="slds-text-title slds-m-bottom_x-small">Assignment Information</div>
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_1-of-2">
+                                <p>Assigned To: {assignedUserName}</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <p>Status: {lead.Assignment_Status__c}</p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                
+                <!-- Last Scored Date -->
+                <div class="slds-m-top_medium">
+                    <div class="slds-text-title">Last Scored</div>
+                    <lightning-formatted-date-time value={lead.Last_Scored_Date__c}></lightning-formatted-date-time>
+                </div>
+            </template>
+            
+            <template if:false={lead}>
+                <div class="slds-text-align_center slds-p-around_medium">
+                    Loading lead information...
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
