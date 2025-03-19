@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Lead.Lead_Score__c</members>
+        <members>Lead.Lead_Grade__c</members>
+        <members>Lead.Lead_Source_Score__c</members>
+        <members>Lead.Company_Size_Score__c</members>
+        <members>Lead.Industry_Score__c</members>
+        <members>Lead.Last_Scored_Date__c</members>
+        <members>Lead.Assigned_To__c</members>
+        <members>Lead.Assignment_Status__c</members>
+        <name>CustomField</name>
+    </types>
+    <version>57.0</version>
+</Package>
+
