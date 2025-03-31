@@ -11,6 +11,6 @@
         <members>Lead.Assignment_Status__c</members>
         <name>CustomField</name>
     </types>
-    <version>57.0</version>
+    <version>61.0</version>
 </Package>
 
