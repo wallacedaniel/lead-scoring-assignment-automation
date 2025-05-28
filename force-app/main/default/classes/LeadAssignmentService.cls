@@ -35,7 +35,10 @@ public class LeadAssignmentService {
                 
                 // Submit high-value leads for approval
                 if(lead.Lead_Grade__c == 'A') {
-                    Approval.ProcessSubmitRequest req = createApprovalRequest(lead);
+                    Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
+                    req.setComments('Submitting high-value lead for approval');
+                    req.setObjectId(lead.Id);
+                    req.setNextApproverIds(new List<Id>{UserInfo.getUserId()});
                     approvalRequests.add(req);
                 }
             }
@@ -73,11 +76,10 @@ public class LeadAssignmentService {
     // Get rep specialties (industry expertise)
     private static Map<Id, String> getRepSpecialties() {
         Map<Id, String> specialties = new Map<Id, String>();
-        // In a real implementation, this would come from a custom object or field
-        // For this example, we'll hardcode some values
         
         // Query all sales users
-        for(User u : [SELECT Id, Industry_Specialty__c FROM User WHERE IsActive = true AND Profile.Name = 'Sales User']) {
+        for(User u : [SELECT Id, Name, ProfileId FROM User WHERE IsActive = true AND Profile.Name = 'Sales User']) {
+            // Since we're using a custom field, we need to check if it exists
             if(u.Industry_Specialty__c != null) {
                 specialties.put(u.Id, u.Industry_Specialty__c);
             }

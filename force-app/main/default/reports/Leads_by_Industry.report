@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Industry</field>
+        <field>Count</field>
+    </columns>
+    <groupings>
+        <field>Industry</field>
+        <sortDirection>ASC</sortDirection>
+    </groupings>
+    <label>Leads by Industry</label>
+    <reportFormat>Tabular</reportFormat>
+    <showSummary>true</showSummary>
+    <sortBy>
+        <field>Industry</field>
+        <sortDirection>ASC</sortDirection>
+    </sortBy>
+    <type>Lead</type>
+</Report>

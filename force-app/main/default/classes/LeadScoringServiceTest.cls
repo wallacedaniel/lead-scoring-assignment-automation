@@ -44,8 +44,8 @@ public class LeadAssignmentServiceTest {
             LastName = 'Lead',
             Company = 'Tech Company',
             Industry = 'Technology',
-            Lead_Score__c = 95,
-            Lead_Grade__c = 'A'
+            LeadSource = 'Web',
+            NumberOfEmployees = 1000
         );
         
         Lead financeLead = new Lead(
@@ -53,9 +53,12 @@ public class LeadAssignmentServiceTest {
             LastName = 'Lead',
             Company = 'Finance Company',
             Industry = 'Financial Services',
-            Lead_Score__c = 85,
-            Lead_Grade__c = 'A'
+            LeadSource = 'Web',
+            NumberOfEmployees = 1000
         );
+        
+        // Calculate scores
+        LeadScoringService.scoreLeads(new List<Lead>{techLead, financeLead});
         
         // Insert test leads
         List<Lead> testLeads = new List<Lead>{techLead, financeLead};

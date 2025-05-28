@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Lead_Name</field>
+        <field>Company</field>
+        <field>Lead_Score__c</field>
+        <field>Lead_Grade__c</field>
+        <field>Assigned_To__c</field>
+        <field>Assignment_Status__c</field>
+        <field>Last_Scored_Date__c</field>
+    </columns>
+    <filters>
+        <field>Lead_Grade__c</field>
+        <operation>equals</operation>
+        <value>A</value>
+    </filters>
+    <label>Top 10 High-Value Leads</label>
+    <reportFormat>Tabular</reportFormat>
+    <showSummary>true</showSummary>
+    <sortBy>
+        <field>Lead_Score__c</field>
+        <sortDirection>DESC</sortDirection>
+    </sortBy>
+    <type>Lead</type>
+</Report>

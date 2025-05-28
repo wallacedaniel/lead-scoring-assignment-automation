@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dashboardComponents>
+        <component>
+            <column>1</column>
+            <componentType>gauge</componentType>
+            <dashboardComponentType>Gauge</dashboardComponentType>
+            <height>200</height>
+            <name>Lead Score Distribution</name>
+            <report>
+                <reportId>Lead_Score_Distribution</reportId>
+            </report>
+            <width>1</width>
+        </component>
+        <component>
+            <column>2</column>
+            <componentType>bar</componentType>
+            <dashboardComponentType>Bar</dashboardComponentType>
+            <height>200</height>
+            <name>Lead Assignment Status</name>
+            <report>
+                <reportId>Lead_Assignment_Status</reportId>
+            </report>
+            <width>1</width>
+        </component>
+        <component>
+            <column>1</column>
+            <componentType>table</componentType>
+            <dashboardComponentType>Table</dashboardComponentType>
+            <height>300</height>
+            <name>Top 10 High-Value Leads</name>
+            <report>
+                <reportId>Top_10_High_Value_Leads</reportId>
+            </report>
+            <width>2</width>
+        </component>
+        <component>
+            <column>1</column>
+            <componentType>bar</componentType>
+            <dashboardComponentType>Bar</dashboardComponentType>
+            <height>200</height>
+            <name>Leads by Industry</name>
+            <report>
+                <reportId>Leads_by_Industry</reportId>
+            </report>
+            <width>1</width>
+        </component>
+        <component>
+            <column>2</column>
+            <componentType>bar</componentType>
+            <dashboardComponentType>Bar</dashboardComponentType>
+            <height>200</height>
+            <name>Leads by Source</name>
+            <report>
+                <reportId>Leads_by_Source</reportId>
+            </report>
+            <width>1</width>
+        </component>
+    </dashboardComponents>
+    <description>Dashboard showing lead scoring and assignment metrics</description>
+    <label>Lead Scoring Dashboard</label>
+    <numberOfColumns>2</numberOfColumns>
+    <showTitle>true</showTitle>
+    <title>Lead Scoring and Assignment Dashboard</title>
+</Dashboard>

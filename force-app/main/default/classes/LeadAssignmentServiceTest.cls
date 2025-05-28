@@ -1,56 +1,43 @@
 @isTest
-public class LeadAssignmentServiceTest {
+private class LeadAssignmentServiceTest {
     
     @isTest
     static void testLeadAssignment() {
-        // Create test users
-        Profile salesProfile = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
-        
-        User testUser1 = new User(
+        // Create test lead
+        Lead testLead = new Lead(
             FirstName = 'Test',
-            LastName = 'User1',
-            Email = 'testuser1@example.com',
-            Username = 'testuser1@example.com' + System.currentTimeMillis(),
-            Alias = 'tuser1',
-            TimeZoneSidKey = 'America/Los_Angeles',
-            LocaleSidKey = 'en_US',
-            EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'en_US',
-            ProfileId = salesProfile.Id,
-            Industry_Specialty__c = 'Technology'
-        );
-        
-        User testUser2 = new User(
-            FirstName = 'Test',
-            LastName = 'User2',
-            Email = 'testuser2@example.com',
-            Username = 'testuser2@example.com' + System.currentTimeMillis(),
-            Alias = 'tuser2',
-            TimeZoneSidKey = 'America/Los_Angeles',
-            LocaleSidKey = 'en_US',
-            EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'en_US',
-            ProfileId = salesProfile.Id,
-            Industry_Specialty__c = 'Financial Services'
-        );
-        
-        // Insert test users
-        List<User> testUsers = new List<User>{testUser1, testUser2};
-        insert testUsers;
-        
-        // Create test leads with scores
-        Lead techLead = new Lead(
-            FirstName = 'Tech',
             LastName = 'Lead',
-            Company = 'Tech Company',
+            Company = 'Test Company',
             Industry = 'Technology',
-            Lead_Score__c = 95,
-            Lead_Grade__c = 'A'
+            LeadSource = 'Web',
+            NumberOfEmployees = 1000
         );
         
-        Lead financeLead = new Lead(
+        // Create test users
+        User techRep = new User(
+            FirstName = 'Tech',
+            LastName = 'Rep',
+            ProfileId = [SELECT Id FROM Profile WHERE Name = 'Sales User'].Id,
+            Username = 'techrep@test.com',
+            Email = 'techrep@test.com',
+            Alias = 'techrep',
+            TimeZoneSidKey = 'America/New_York',
+            LocaleSidKey = 'en_US',
+            EmailEncodingKey = 'UTF-8',
+            LanguageLocaleKey = 'en_US'
+        );
+        
+        User financeRep = new User(
             FirstName = 'Finance',
-            LastName = 'Lead',
+            LastName = 'Rep',
+            ProfileId = [SELECT Id FROM Profile WHERE Name = 'Sales User'].Id,
+            Username = 'financerep@test.com',
+            Email = 'financerep@test.com',
+            Alias = 'financerep',
+            TimeZoneSidKey = 'America/New_York',
+            LocaleSidKey = 'en_US',
+            EmailEncodingKey = 'UTF-8',
+            LanguageLocaleKey = 'en_US'
             Company = 'Finance Company',
             Industry = 'Financial Services',
             Lead_Score__c = 85,

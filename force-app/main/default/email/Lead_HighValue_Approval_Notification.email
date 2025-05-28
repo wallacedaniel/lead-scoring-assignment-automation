@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availableForPersonalEmail>true</availableForPersonalEmail>
+    <availableForProfessionalEmail>true</availableForProfessionalEmail>
+    <availableForPublicEmail>true</availableForPublicEmail>
+    <availableForQueueEmail>true</availableForQueueEmail>
+    <availableForSalesEmail>true</availableForSalesEmail>
+    <availableForSupportEmail>true</availableForSupportEmail>
+    <availableForSystemEmail>true</availableForSystemEmail>
+    <body>
+        <messaging:emailTemplate subject="High-Value Lead Approval Required" recipientType="User" relatedToType="Lead">
+            <messaging:plainTextEmailBody>
+                Dear {!Recipient.Name},
+
+                A high-value lead (Grade A) requires your approval:
+
+                Lead Name: {!RelatedTo.FirstName} {!RelatedTo.LastName}
+                Company: {!RelatedTo.Company}
+                Lead Score: {!RelatedTo.Lead_Score__c}
+                Lead Grade: {!RelatedTo.Lead_Grade__c}
+
+                Please review and approve/reject this lead in Salesforce.
+
+                Regards,
+                Salesforce System
+            </messaging:plainTextEmailBody>
+        </messaging:emailTemplate>
+    </body>
+    <description>Notification email for high-value lead approval</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <htmlEmailBody>
+        <messaging:emailTemplate subject="High-Value Lead Approval Required" recipientType="User" relatedToType="Lead">
+            <messaging:htmlEmailBody>
+                <html>
+                    <body>
+                        <p>Dear {!Recipient.Name},</p>
+                        
+                        <p>A high-value lead (Grade A) requires your approval:</p>
+                        
+                        <table style="border-collapse: collapse; width: 100%;">
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: right; width: 200px;">Lead Name:</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{!RelatedTo.FirstName} {!RelatedTo.LastName}</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">Company:</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{!RelatedTo.Company}</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">Lead Score:</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{!RelatedTo.Lead_Score__c}</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">Lead Grade:</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{!RelatedTo.Lead_Grade__c}</td>
+                            </tr>
+                        </table>
+                        
+                        <p>Please review and approve/reject this lead in Salesforce.</p>
+                        
+                        <p>Regards,<br>Salesforce System</p>
+                    </body>
+                </html>
+            </messaging:htmlEmailBody>
+        </messaging:emailTemplate>
+    </htmlEmailBody>
+    <htmlTemplate>Lead_HighValue_Approval_Notification.html</htmlTemplate>
+    <name>Lead_HighValue_Approval_Notification</name>
+    <style>
+        <messaging:emailTemplate subject="High-Value Lead Approval Required" recipientType="User" relatedToType="Lead">
+            <messaging:style>
+                .header {
+                    background-color: #f5f5f5;
+                    padding: 15px;
+                    border-bottom: 2px solid #ddd;
+                }
+                .content {
+                    padding: 20px;
+                    font-family: Arial, sans-serif;
+                }
+                .table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+                .table td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                }
+            </messaging:style>
+        </messaging:emailTemplate>
+    </style>
+    <subject>High-Value Lead Approval Required</subject>
+    <type>html</type>
+</EmailTemplate>
